@@ -12,3 +12,51 @@ git push -u origin main
 git remote add origin https://github.com/stefyxx/git.git
 git branch -M main
 git push -u origin main
+
+
+	… create a new branch on the command line
+git branch nomeBranch 			-> crea branch 
+git checkout nomeBranchPrincipaleDoveDeviMerger		-> ti porta sulla branch
+	git checkout –b nomBranch  	-> crea e checcka
+
+
+	… MERGE NBB prima di merge assicurati di aver fatto tutti I commit e push fino all’ultima modifica
+git checkout branchPRINCIPALE		-> checcka branch DOVE devi merger
+git merge brancDEVaMerger			-> merge la branch dev NELLA tua branch checckata
+
+SE la BRANCH brancDEVaMerger NON TI SERVE PIU’, LA PUOI ELIMINARE
+git branch –d brancDEVaMerger		-> ELIMINA brancDEVaMerger
+
+	… MERGE : si genera un conflitto
+Se in branchPRINCIPALE et in brancDEVaMerger ho modificato la stessa parte IN MODO DIVERSO nei due rami, git non é capace di scegliere tra le modifiche ; bisogna farlo alla mano
+-> avro : CONFLICT (content): Merge conflict in …
+	  Automatic merge failed; fix conflicts and then commit the result.
+
+git status		-> x vedere quali file sono separati in qualsiasi momento dopo un 				conflitto di unione
+	vedro’ ……… both modified:      index.html   (es: index.html é il file modif in 							entrambe le branch)  
+		no changes added to commit (use "git add" and/or "git commit -a")
+	
+	con degli ‘indicatori’ posso entrare in ogni conflitto e per risolvere il conflitto, devi scegliere da una parte o dall'altra o unire tu stesso i contenuti.
+
+<<<<<<<, ======= e >>>>>>> sono state completamente rimosse
+
+git add 	-> Dopo aver risolto ciascuna di queste sezioni in ogni file in conflitto, esegui git add su ogni file per contrassegnarlo come risolto
+git status 	-> per controllare che ogni conflitto é risolto 
+git commit	-> per finalizzare il merger // ha un sms di default, oppure ne puoi scrivere 		uno tu
+__
+RIASSUMENDO:
+git status 
+  risolvi ogni conflitto alla mano RIMUOVENDO <<<<<<<, ======= e >>>>>>>
+  o usa git mergetool per risolvere I conflitti con una grafica ‘piu’ leggibile’
+git add per ogni conflitto
+git status
+git commit
+_____________
+
+Git merge –abort 	-> annulla il merge riportando SOLO i conflitti allo stato di pre-merge (quindi potrebbe non funzionare)
+
+
+	…ritornare a una versione precedente dfistruggendo tutte quelle fatte dopo su quel branch
+git log 
+    -> Cercare il n° del commit desiderato (lo riconosco dal sms)
+git remote n°commitDesiderato
