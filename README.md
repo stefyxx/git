@@ -3,7 +3,7 @@ FACOLTATIVO, puo' servire se il PC é aziendale, e cosi' si sa chia ha fatto cos
 Vediamo i comandi:      
 
     git config --global user.name "_nome e cognome_"        
-    git config --global user.email "_la ltua mail_"
+    git config --global user.email "_la tua mail_"
 
 ## New Project
 ### …or create a new repository on the command line
